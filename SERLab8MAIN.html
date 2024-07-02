@@ -17,7 +17,7 @@ buttons to revisit or skip ahead in the slideshow.
  
 	 <meta charset="UTF-8">
 	 
-	  <title> SULLY ERKAN-RIJOS - LAB 8 - JAVASCRIPT SLIDESHOW </title>
+	  <title> SULLY ERKAN-RIJOS - JAVASCRIPT SLIDESHOW </title>
 	 
 	  <link href="SERLab8MAIN.css" text="text/css" rel="stylesheet">
   
@@ -26,11 +26,14 @@ buttons to revisit or skip ahead in the slideshow.
 	<script>
 
 		<!-- JS VARIABLES ---------------------------------------->  
-		var imgArray = new Array(4);
+		var imgArray = new Array(10);
 
 		var index1 = 0;
 
 		var flag = confirm("Do you want to see pictures in order or random? OK for Ordered, Cancel for Random");
+
+		var slideshowInterval;
+
 
 		<!-- JS VARIABLES ---------------------------------------->
 
@@ -70,7 +73,7 @@ buttons to revisit or skip ahead in the slideshow.
 		  {
 			index1 = 0;
 		  }
-		  setTimeout(orderedSlideShow, 2000);
+		  slideshowInterval = setTimeout(orderedSlideShow, 2000);
 		  return;
 		}
 
@@ -78,29 +81,38 @@ buttons to revisit or skip ahead in the slideshow.
 		{
 		  index1 = Math.floor(Math.random() * 10);
 		  document.banner1.src = imgArray[index1].src;
-		  setTimeout(randomSlideShow, 2000);
+		  slideshowInterval = setTimeout(randomSlideShow, 2000);
 		  return;
 		}
 
-		function doBack()
-		{
-		  if (index1 > 0)
-		  {
-			index1--;
-			document.slideshow.src = imgArray[index1].src;
-		  }
-		  return;
-		}
 
-		function doNext()
-		{
-		  if (index1 < 3)
-		  {
-			index1++;
-			document.slideshow.src = imgArray[index1].src;
-		  }
-		  return;
-		}
+		function doBack() {
+    clearTimeout(slideshowInterval); // Clear the current slideshow interval
+    
+    if (index1 > 0) {
+        index1--;
+    } else {
+        index1 = imgArray.length - 1; // Wrap around to the last image
+    }
+    
+    document.banner1.src = imgArray[index1].src;
+	return;
+}
+
+function doNext() {
+    clearTimeout(slideshowInterval); // Clear the current slideshow interval
+    
+    if (index1 < imgArray.length - 1) {
+        index1++;
+    } else {
+        index1 = 0; // Wrap around to the first image
+    }
+    
+    document.banner1.src = imgArray[index1].src;
+	return;
+}
+
+
 
 		window.onload = function() {
 		  startup();
