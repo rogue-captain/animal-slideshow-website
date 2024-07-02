@@ -1,0 +1,146 @@
+<!-- Name: Sully Erkan-Rijos
+
+Class: CST - 131
+
+ Lab: 8
+ 
+
+Description: This tiny program is a simple slideshow where the user can select if they wish to see 
+an ordered or a random slideshow of animals. The user has images of pointer dogs to symbolize 
+buttons to revisit or skip ahead in the slideshow.
+
+-->
+
+<html lang="en-US">
+
+ <head>
+ 
+	 <meta charset="UTF-8">
+	 
+	  <title> SULLY ERKAN-RIJOS - LAB 8 - JAVASCRIPT SLIDESHOW </title>
+	 
+	  <link href="SERLab8MAIN.css" text="text/css" rel="stylesheet">
+  
+  <!---------------------------------------------------------------------------------->
+  
+	<script>
+
+		<!-- JS VARIABLES ---------------------------------------->  
+		var imgArray = new Array(4);
+
+		var index1 = 0;
+
+		var flag = confirm("Do you want to see pictures in order or random? OK for Ordered, Cancel for Random");
+
+		<!-- JS VARIABLES ---------------------------------------->
+
+
+		function startup() <!-- Assigns & Loads all 4 index variables w image, then calls: cycle(), select()-->
+		{
+		  imgArray[0] = new Image;
+		  imgArray[0].src = "bald_eagle.jpg";
+		  imgArray[1] = new Image;
+		  imgArray[1].src = "grizzly.jpg";
+		  imgArray[2] = new Image;
+		  imgArray[2].src = "gaboon_viper.jpg";
+		  imgArray[3] = new Image;
+		  imgArray[3].src = "praying_mantis.jpeg";
+		  imgArray[4] = new Image;
+		  imgArray[4].src = "orca.jpg";
+		  imgArray[5] = new Image;
+		  imgArray[5].src = "rabbit.jpg";
+		  imgArray[6] = new Image;
+		  imgArray[6].src = "rottweiler.jpg";
+		  imgArray[7] = new Image;
+		  imgArray[7].src = "giant_squid.jpg";
+		  imgArray[8] = new Image;
+		  imgArray[8].src = "komodo_dragon.jpg";
+		  imgArray[9] = new Image;
+		  imgArray[9].src = "rhino.jpg";
+
+		  return;
+		} 
+
+
+		function orderedSlideShow() //ORDERED
+		{
+		  document.banner1.src = imgArray[index1].src; <!--increases index1, 1 unit per 2 seconds to change -->
+		  index1++;
+		  if (index1 > 9)
+		  {
+			index1 = 0;
+		  }
+		  setTimeout(orderedSlideShow, 2000);
+		  return;
+		}
+
+		function randomSlideShow()
+		{
+		  index1 = Math.floor(Math.random() * 10);
+		  document.banner1.src = imgArray[index1].src;
+		  setTimeout(randomSlideShow, 2000);
+		  return;
+		}
+
+		function doBack()
+		{
+		  if (index1 > 0)
+		  {
+			index1--;
+			document.slideshow.src = imgArray[index1].src;
+		  }
+		  return;
+		}
+
+		function doNext()
+		{
+		  if (index1 < 3)
+		  {
+			index1++;
+			document.slideshow.src = imgArray[index1].src;
+		  }
+		  return;
+		}
+
+		window.onload = function() {
+		  startup();
+		  if (flag) {
+			orderedSlideShow();
+		  } else {
+			randomSlideShow();
+		  }
+		};
+
+	  </script>
+ </head>
+ 
+ 
+ 
+ <body>
+ 
+ <Header> 
+	 <h1> JavaScript Slide Show </h1>
+ </header>
+ 
+
+ 
+<div id="MAIN" > 
+	
+	<table>
+		<tr>
+			<td> <a href="javascript:doBack()"> <img src="pointLeft(previous).jpg" height="200" width="300" alt="Previous"> </a> <p class="bottom-text">  PREVIOUS </p> </td>
+
+			<td> <img name="banner1" src="grizzly.jpg"> </td>
+			
+			<td> <a href="javascript:doNext()"> <img src="pointRight(next).jpg" height="200" width="300" alt="Next"> </a> <p class="bottom-text"> NEXT </p> </td>
+
+		</tr>
+	</table>
+
+</div> <!-- MAIN -->
+
+<br>
+ 
+ </body>
+ 
+ </html>
