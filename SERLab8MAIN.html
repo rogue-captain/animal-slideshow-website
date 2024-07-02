@@ -96,6 +96,12 @@ buttons to revisit or skip ahead in the slideshow.
     }
     
     document.banner1.src = imgArray[index1].src;
+
+	if (flag === true) {
+		slideshowInterval = setTimeout(orderedSlideShow, 2000);
+	} else {
+		slideshowInterval = setTimeout(randomSlideShow, 2000);
+	}
 	return;
 }
 
@@ -109,6 +115,12 @@ function doNext() {
     }
     
     document.banner1.src = imgArray[index1].src;
+
+	if (flag === true) {
+		slideshowInterval = setTimeout(orderedSlideShow, 2000);
+	} else {
+		slideshowInterval = setTimeout(randomSlideShow, 2000);
+	}
 	return;
 }
 
