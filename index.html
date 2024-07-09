@@ -1,0 +1,58 @@
+<!-- Name: Sully Erkan-Rijos
+
+Class: CST - 131
+
+ Lab: 8
+ 
+
+Description: This tiny program is a simple slideshow where the user can select if they wish to see 
+an ordered or a random slideshow of animals. The user has images of pointer dogs to symbolize 
+buttons to revisit or skip ahead in the slideshow.
+
+-->
+
+<html lang="en-US">
+
+ <head>
+ 
+	 <meta charset="UTF-8">
+	 
+	  <title> SULLY ERKAN-RIJOS - JAVASCRIPT SLIDESHOW </title>
+	 
+	  <link href="SERLab8MAIN.css" text="text/css" rel="stylesheet">
+  
+  <!---------------------------------------------------------------------------------->
+  
+	<script src="AnimalSiteJS.js">	  </script>
+ </head>
+ 
+ 
+ 
+ <body>
+ 
+ <Header> 
+	 <h1> JavaScript Slide Show </h1>
+ </header>
+ 
+
+ 
+<div id="MAIN" > 
+	
+	<table>
+		<tr>
+			<td> <a href="javascript:doBack()"> <img src="pointLeft(previous).jpg" height="200" width="300" alt="Previous"> </a> <p class="bottom-text">  PREVIOUS </p> </td>
+
+			<td> <img name="banner1" src="grizzly.jpg"> </td>
+			
+			<td> <a href="javascript:doNext()"> <img src="pointRight(next).jpg" height="200" width="300" alt="Next"> </a> <p class="bottom-text"> NEXT </p> </td>
+
+		</tr>
+	</table>
+
+</div> <!-- MAIN -->
+
+<br>
+ 
+ </body>
+ 
+ </html>
